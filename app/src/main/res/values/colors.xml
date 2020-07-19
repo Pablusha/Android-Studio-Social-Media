@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="splashBackgroundColor">#F2F2F2</color>
+    <color name="loginBackgroundColor">#80FFFF</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorKayitOlText">#02A7F0</color>
 </resources>
