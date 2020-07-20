@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "391170556628",
+    "firebase_url": "https://bir-film-oner.firebaseio.com",
+    "project_id": "bir-film-oner",
+    "storage_bucket": "bir-film-oner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391170556628:android:5c8bc654eefc1d68e2f141",
+        "android_client_info": {
+          "package_name": "com.example.birfilmoner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391170556628-57sbtpdrdlne5sc8ne48tem8v0bt6433.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.birfilmoner",
+            "certificate_hash": "3316505f555ddee6c09187775e96ebc42da89c0d"
+          }
+        },
+        {
+          "client_id": "391170556628-ipkbg73i3uq1fqn9m8r7gm7o8deq6jel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5q71kOtHOr0ZBjymYyE-qpDHieG6R77Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391170556628-ipkbg73i3uq1fqn9m8r7gm7o8deq6jel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
