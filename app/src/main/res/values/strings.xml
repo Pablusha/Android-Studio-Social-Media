@@ -3,4 +3,13 @@
     <string name="loginEmail">Email:</string>
     <string name="loginPassword">Şifre:</string>
     <string name="registerConfPassword">Şifre Onay:</string>
+    <string name="chkBeniHatirla">Beni Hatırla</string>
+    <string name="btnGiris">GiRİŞ YAP</string>
+    <string name="kayitliDegil1">Kayıtlı değil misiniz?</string>
+    <string name="txtKayit">KAYIT OL</string>
+    <string name="sifremiUnuttum">Şifremi Unuttum</string>
+    <string name="designedText">Developed and designed by</string>
+    <string name="myName">Yasin Akdoğan</string>
+    <string name="kayitli1">Kayıtlı bir üye misiniz?</string>
+    <string name="txtGiris">GİRİŞ</string>
 </resources>

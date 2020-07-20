@@ -50,7 +50,7 @@
             android:id="@+id/ac_login_chkHatirla"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_15sdp"
-            android:text="Beni Hatırla"
+            android:text="@string/chkBeniHatirla"
             android:layout_below="@id/ac_login_edtPassword"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_38sdp" />
@@ -65,7 +65,7 @@
             android:id="@+id/ac_login_btnGiris"
             android:layout_width="@dimen/_211sdp"
             android:layout_height="@dimen/_40sdp"
-            android:text="GiRİŞ YAP"
+            android:text="@string/btnGiris"
             android:layout_centerHorizontal="true"
             android:background="@drawable/button_login_border"
             android:layout_marginTop="@dimen/_8sdp" />
@@ -74,7 +74,7 @@
             android:layout_width="@dimen/_128sdp"
             android:layout_height="@dimen/_18sdp"
             android:layout_below="@id/ac_login_btnGiris"
-            android:text="Kayıtlı değil misiniz?"
+            android:text="@string/kayitliDegil1"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/_14sdp"
             android:layout_marginStart="@dimen/_63sdp"
@@ -85,7 +85,7 @@
             android:layout_width="@dimen/_62sdp"
             android:layout_height="@dimen/_16sdp"
             android:layout_below="@id/ac_login_btnGiris"
-            android:text="KAYIT OL"
+            android:text="@string/txtKayit"
             android:textColor="@color/colorKayitOlText"
             android:textSize="@dimen/_14sdp"
             android:layout_alignParentEnd="true"
@@ -97,7 +97,7 @@
             android:layout_width="@dimen/_96sdp"
             android:layout_height="@dimen/_15sdp"
             android:layout_below="@id/ac_login_txtKayit"
-            android:text="Şifremi Unuttum"
+            android:text="@string/sifremiUnuttum"
             android:textColor="#02A7F0"
             android:layout_marginStart="@dimen/_110sdp"
             android:layout_marginTop="@dimen/_5sdp"/>
@@ -106,7 +106,7 @@
             android:id="@+id/ac_login_designed_text"
             android:layout_width="@dimen/_174sdp"
             android:layout_height="@dimen/_35sdp"
-            android:text="Developed and designed by"
+            android:text="@string/designedText"
             android:textSize="@dimen/_14sdp"
             android:textColor="@color/colorBlack"
             android:layout_alignParentBottom="true"
@@ -115,15 +115,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
-            android:text="Yasin Akdoğan"
+            android:text="@string/myName"
             android:layout_centerHorizontal="true"
             android:textColor="@color/colorBlack"
             android:layout_alignParentBottom="true"
             android:textSize="@dimen/_14sdp" />
 
     </RelativeLayout>
-
-
-
 
 </LinearLayout>
