@@ -23,7 +23,7 @@
         <EditText
             android:id="@+id/ac_register_edtEmail"
             android:layout_width="@dimen/_211sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_height="@dimen/_29sdp"
             android:padding="@dimen/_2sdp"
             android:background="@drawable/edit_text_border"
             android:hint="@string/loginEmail"
@@ -36,7 +36,7 @@
         <EditText
             android:id="@+id/ac_register_edtPassword"
             android:layout_width="@dimen/_211sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_height="@dimen/_29sdp"
             android:padding="@dimen/_2sdp"
             android:background="@drawable/edit_text_border"
             android:hint="@string/loginPassword"
@@ -49,10 +49,11 @@
         <EditText
             android:id="@+id/ac_register_edtSifreOnay"
             android:layout_width="@dimen/_211sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_height="@dimen/_29sdp"
             android:padding="@dimen/_2sdp"
             android:background="@drawable/edit_text_border"
             android:hint="@string/registerConfPassword"
+            android:inputType="textPassword"
             android:layout_below="@id/ac_register_edtPassword"
             android:textColorHint="@color/colorBlack"
             android:layout_marginTop="@dimen/_10sdp"
@@ -68,7 +69,7 @@
             android:id="@+id/ac_register_btnKayit"
             android:layout_width="@dimen/_211sdp"
             android:layout_height="@dimen/_40sdp"
-            android:text="@string/txtKayit"
+            android:text="@string/btnDevam"
             android:layout_centerHorizontal="true"
             android:background="@drawable/button_register_border"
             android:layout_marginTop="@dimen/_20sdp" />
@@ -76,7 +77,7 @@
         <TextView
             android:layout_width="@dimen/_140sdp"
             android:layout_height="@dimen/_20sdp"
-            android:layout_below="@id/ac_register_btnKayit"
+            android:layout_below="@id/ac_register_btnDevam"
             android:text="@string/kayitli1"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/_14sdp"
@@ -86,8 +87,8 @@
         <TextView
             android:id="@+id/ac_register_txtKayit"
             android:layout_width="@dimen/_62sdp"
-            android:layout_height="@dimen/_19sdp"
-            android:layout_below="@id/ac_register_btnKayit"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_below="@id/ac_register_btnDevam"
             android:text="@string/txtGiris"
             android:textColor="#F2F2F2"
             android:textSize="@dimen/_14sdp"

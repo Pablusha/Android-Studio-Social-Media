@@ -23,7 +23,7 @@
         <EditText
             android:id="@+id/ac_login_edtEmail"
             android:layout_width="@dimen/_211sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_height="@dimen/_29sdp"
             android:padding="@dimen/_2sdp"
             android:background="@drawable/edit_text_border"
             android:hint="@string/loginEmail"
@@ -36,7 +36,7 @@
         <EditText
             android:id="@+id/ac_login_edtPassword"
             android:layout_width="@dimen/_211sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_height="@dimen/_29sdp"
             android:textColorHint="@color/colorBlack"
             android:padding="@dimen/_2sdp"
             android:background="@drawable/edit_text_border"
@@ -83,7 +83,7 @@
         <TextView
             android:id="@+id/ac_login_txtKayit"
             android:layout_width="@dimen/_62sdp"
-            android:layout_height="@dimen/_16sdp"
+            android:layout_height="@dimen/_20sdp"
             android:layout_below="@id/ac_login_btnGiris"
             android:text="@string/txtKayit"
             android:textColor="@color/colorKayitOlText"

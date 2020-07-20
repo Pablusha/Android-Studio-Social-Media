@@ -12,4 +12,10 @@
     <string name="myName">Yasin Akdoğan</string>
     <string name="kayitli1">Kayıtlı bir üye misiniz?</string>
     <string name="txtGiris">GİRİŞ</string>
+    <string name="btnDevam">DEVAM</string>
+    <string-array name="cinsiyet">
+        <item>Cinsiyetiniz:</item>
+        <item>Erkek</item>
+        <item>Kadın</item>
+    </string-array>
 </resources>

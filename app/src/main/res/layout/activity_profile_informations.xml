@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileInformationsActivity"
+    android:background="#63FFFF00">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_73sdp"
+        android:orientation="horizontal" >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ac_second_register_profile"
+            android:layout_width="@dimen/_146sdp"
+            android:layout_height="@dimen/_137sdp"
+            android:src="@drawable/profile"
+            app:civ_border_color="@color/colorBlack"
+            app:civ_border_width="@dimen/_2sdp"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/ac_second_register_edt_ad_soyad"
+            android:layout_width="@dimen/_206sdp"
+            android:layout_height="@dimen/_29sdp"
+            android:paddingLeft="@dimen/_2sdp"
+            android:background="@drawable/edit_text_border"
+            android:layout_below="@id/ac_second_register_profile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_45sdp"
+            android:hint="Ad Soyad:"
+            android:textColorHint="@color/colorBlack" />
+
+        <Spinner
+            android:id="@+id/ac_second_register_cinsiyet"
+            android:layout_width="@dimen/_206sdp"
+            android:layout_height="@dimen/_29sdp"
+            android:background="@drawable/edit_text_border"
+            android:layout_below="@id/ac_second_register_edt_ad_soyad"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_15sdp" />
+
+        <Button
+            android:id="@+id/ac_second_Register_btnKayit"
+            android:layout_width="@dimen/_206sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:text="@string/txtKayit"
+            android:background="@drawable/button_second_register_border"
+            android:layout_below="@id/ac_second_register_cinsiyet"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

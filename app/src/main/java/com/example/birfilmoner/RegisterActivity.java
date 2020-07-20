@@ -1,5 +1,6 @@
 package com.example.birfilmoner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,17 +12,33 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.birfilmoner.Model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private TextView intentGiris;
     private EditText edtEmail,edtSifre,edtSifreOnay;
     private Button btnKayit;
+    DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initializeViews();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("User");
+        firebaseAuth = FirebaseAuth.getInstance();
         kayitOl();
 
     }
@@ -30,8 +47,8 @@ public class RegisterActivity extends AppCompatActivity {
         btnKayit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = edtEmail.getText().toString();
-                String sifre = edtSifre.getText().toString();
+                final String email = edtEmail.getText().toString();
+                final String sifre = edtSifre.getText().toString();
                 String sifreOnay = edtSifreOnay.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
@@ -49,13 +66,40 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (sifre.length() < 6) {
+                    Toast.makeText(RegisterActivity.this,"Şifreniz en az 6 karakter olmalıdır.",Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 if (!sifre.equals(sifreOnay)) {
                     Toast.makeText(RegisterActivity.this,"Şifreleriniz uyuşmuyor.",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                firebaseAuth.createUserWithEmailAndPassword(email,sifre)
+                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    User user = new User(email,sifre);
+                                    FirebaseDatabase.getInstance().getReference("User")
+                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Toast.makeText(RegisterActivity.this,"Kayıt olma işlemi başarılı.",Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                                            startActivity(intent);
+                                        }
+
+                                    });
+                                }
+                            }
+                        });
+
             }
         });
+
     }
 
     private void initializeViews() {

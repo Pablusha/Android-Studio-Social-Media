@@ -11,7 +11,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        android.ndkVersion "21.0.6113669"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -32,11 +32,16 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
     //Scalable Dp
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Image Cropper
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
     implementation 'com.google.firebase:firebase-auth:19.3.2'
     implementation 'com.google.firebase:firebase-database:19.3.1'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
 
+    implementation 'com.google.firebase:firebase-core:16.0.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
