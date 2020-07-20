@@ -91,6 +91,7 @@
             android:text="@string/txtGiris"
             android:textColor="#F2F2F2"
             android:textSize="@dimen/_14sdp"
+            android:onClick="setIntentKayit"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_36sdp"
             android:layout_marginTop="@dimen/_10sdp" />
