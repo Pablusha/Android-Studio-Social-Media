@@ -44,10 +44,10 @@
             android:layout_marginTop="@dimen/_15sdp" />
 
         <Button
-            android:id="@+id/ac_second_Register_btnKayit"
+            android:id="@+id/ac_second_Register_btnDevam"
             android:layout_width="@dimen/_206sdp"
             android:layout_height="@dimen/_40sdp"
-            android:text="@string/txtKayit"
+            android:text="@string/btnDevam"
             android:background="@drawable/button_second_register_border"
             android:layout_below="@id/ac_second_register_cinsiyet"
             android:layout_centerHorizontal="true"

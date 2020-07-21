@@ -19,11 +19,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -34,7 +38,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileInformationsActivity extends AppCompatActivity {
 
     private EditText edtAdSoyad;
-    private Button btnKayit;
+    private Button btnDevam;
     private Spinner spnCinsiyet;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
@@ -50,7 +54,7 @@ public class ProfileInformationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_informations);
 
         edtAdSoyad = findViewById(R.id.ac_second_register_edt_ad_soyad);
-        btnKayit = findViewById(R.id.ac_second_Register_btnKayit);
+        btnDevam = findViewById(R.id.ac_second_Register_btnDevam);
         userProfileImage = findViewById(R.id.ac_second_register_profile);
         //Spinner
         spnCinsiyet = findViewById(R.id.ac_second_register_cinsiyet);
@@ -61,21 +65,23 @@ public class ProfileInformationsActivity extends AppCompatActivity {
         spnCinsiyet.setAdapter(cinsiyetAdapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        currentUserId = firebaseAuth.getCurrentUser().getUid();
         firebaseAuth = FirebaseAuth.getInstance();
         profileImageRef = FirebaseStorage.getInstance().getReference().child("Profile Images");
 
         userProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                currentUserId = firebaseAuth.getCurrentUser().getUid();
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 startActivityForResult(intent,galleryPick);
+                retrieveProfileImage();
             }
         });
 
-        btnKayit.setOnClickListener(new View.OnClickListener() {
+
+        btnDevam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 kayitOl();
@@ -93,7 +99,7 @@ public class ProfileInformationsActivity extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(cinsiyet)) {
+        if (cinsiyet == null) {
             Toast.makeText(ProfileInformationsActivity.this,"Lütfen cinsiyetinizi seçiniz.",Toast.LENGTH_SHORT).show();
             return;
         }
@@ -108,6 +114,7 @@ public class ProfileInformationsActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(ProfileInformationsActivity.this,"Profiliniz güncellendi.",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(ProfileInformationsActivity.this,HomeActivity.class));
                             }
                             else {
                                 String message = task.getException().toString();
@@ -117,6 +124,28 @@ public class ProfileInformationsActivity extends AppCompatActivity {
                     });
         }
 
+    }
+
+    private void retrieveProfileImage() {
+        databaseReference.child("User").child(currentUserId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if ((snapshot.exists()) && (snapshot.hasChild("image"))) {
+                            String retrieveProfileImage = snapshot.child("image").getValue().toString();
+
+                            photoURL = retrieveProfileImage;
+                            Picasso.get().load(retrieveProfileImage).into(userProfileImage);
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     @Override
@@ -129,7 +158,7 @@ public class ProfileInformationsActivity extends AppCompatActivity {
             CropImage.activity()
                     .setGuidelines(CropImageView.Guidelines.ON)
                     .setAspectRatio(1,1)
-                    .start(this);
+                    .start(ProfileInformationsActivity.this);
         }
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
