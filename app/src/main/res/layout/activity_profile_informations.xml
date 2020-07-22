@@ -44,7 +44,7 @@
             android:layout_marginTop="@dimen/_15sdp" />
 
         <Button
-            android:id="@+id/ac_second_Register_btnDevam"
+            android:id="@+id/ac_second_Register_btnKaydet"
             android:layout_width="@dimen/_206sdp"
             android:layout_height="@dimen/_40sdp"
             android:text="@string/btnDevam"

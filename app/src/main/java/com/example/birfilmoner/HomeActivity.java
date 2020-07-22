@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         databaseReference.child("User").child(currentUserId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if ((snapshot.child("ad_soyad").exists())) {
+                if ((snapshot.child("image").exists())) {
 
                 } else {
                     sendUserToProfileInformationsActivity();
