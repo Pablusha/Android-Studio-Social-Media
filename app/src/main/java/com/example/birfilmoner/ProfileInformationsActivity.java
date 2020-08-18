@@ -92,7 +92,12 @@ public class ProfileInformationsActivity extends AppCompatActivity {
         btnKaydet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                kaydet();
+                if (spnCinsiyet.getSelectedItemPosition() == 0) {
+                    Toast.makeText(ProfileInformationsActivity.this,"Lütfen cinsiyetinizi seçiniz.",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    kaydet();
+                }
             }
         });
 

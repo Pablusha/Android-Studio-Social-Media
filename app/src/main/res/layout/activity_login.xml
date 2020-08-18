@@ -24,7 +24,7 @@
             android:id="@+id/ac_login_edtEmail"
             android:layout_width="@dimen/_211sdp"
             android:layout_height="@dimen/_29sdp"
-            android:padding="@dimen/_2sdp"
+            android:padding="@dimen/_4sdp"
             android:background="@drawable/edit_text_border"
             android:hint="@string/loginEmail"
             android:textColorHint="@color/colorBlack"

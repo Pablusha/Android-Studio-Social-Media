@@ -69,7 +69,7 @@
             android:id="@+id/ac_register_btnKayit"
             android:layout_width="@dimen/_211sdp"
             android:layout_height="@dimen/_40sdp"
-            android:text="@string/btnDevam"
+            android:text="@string/txtKayit"
             android:layout_centerHorizontal="true"
             android:background="@drawable/button_register_border"
             android:layout_marginTop="@dimen/_20sdp" />

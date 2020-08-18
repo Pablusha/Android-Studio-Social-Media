@@ -13,7 +13,8 @@
     <string name="kayitli1">Kayıtlı bir üye misiniz?</string>
     <string name="txtGiris">GİRİŞ</string>
     <string name="btnDevam">DEVAM</string>
-    <string-array name="cinsiyet" hint="Cinsiyetiniz:">
+    <string-array name="cinsiyet">
+        <item>Cinsiyet Seçiniz:</item>
         <item>Erkek</item>
         <item>Kadın</item>
     </string-array>
