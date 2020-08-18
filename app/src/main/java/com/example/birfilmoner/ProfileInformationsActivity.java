@@ -189,7 +189,7 @@ public class ProfileInformationsActivity extends AppCompatActivity {
         String cinsiyet = spnCinsiyet.getSelectedItem().toString();
 
         if (TextUtils.isEmpty(ad_soyad)) {
-            Toast.makeText(ProfileInformationsActivity.this,"Lütfen adınzı ve soyadınızı giriniz.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ProfileInformationsActivity.this,"Lütfen adınızı ve soyadınızı giriniz.",Toast.LENGTH_SHORT).show();
             return;
         }
 
