@@ -220,5 +220,8 @@ public class ProfileInformationsActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(ProfileInformationsActivity.this,"Profil bilgilerinizi giriniz.",Toast.LENGTH_SHORT).show();
+    }
 }

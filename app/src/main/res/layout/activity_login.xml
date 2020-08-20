@@ -94,13 +94,16 @@
             android:onClick="setIntentKayit" />
         
         <TextView
-            android:layout_width="@dimen/_96sdp"
-            android:layout_height="@dimen/_15sdp"
+            android:id="@+id/ac_login_txtSifremiUnuttum"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_below="@id/ac_login_txtKayit"
             android:text="@string/sifremiUnuttum"
             android:textColor="#02A7F0"
+            android:textSize="@dimen/_14sdp"
             android:layout_marginStart="@dimen/_110sdp"
-            android:layout_marginTop="@dimen/_5sdp"/>
+            android:layout_marginTop="@dimen/_2sdp"
+            android:onClick="sifremiUnuttum"/>
 
         <TextView
             android:id="@+id/ac_login_designed_text"

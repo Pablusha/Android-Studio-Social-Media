@@ -1,8 +1,10 @@
 package com.example.birfilmoner;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private TextView intentKayit;
+    private TextView intentKayit,txtSifremiUnuttum;
     private EditText edtEmail,edtSifre;
     private Button btnGiris;
     FirebaseAuth firebaseAuth;
@@ -139,5 +143,54 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
         });
+    }
+
+    public void sifremiUnuttum(View view) {
+        txtSifremiUnuttum = findViewById(R.id.ac_login_txtSifremiUnuttum);
+        txtSifremiUnuttum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText resetMail = new EditText(view.getContext());
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
+                passwordResetDialog.setTitle("Şifremi Unuttum");
+                passwordResetDialog.setMessage("Lütfen kayıtlı hesabınızın email adresini giriniz.");
+                passwordResetDialog.setView(resetMail);
+
+                passwordResetDialog.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String email = resetMail.getText().toString();
+
+                        if (TextUtils.isEmpty(email)) {
+                            Toast.makeText(LoginActivity.this,"Şifrenizi sıfırlamak için hesabınızın email adresini girmeniz gerekir.",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            firebaseAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(LoginActivity.this,"Şifrenizi sıfırlamak için gereken bağlantı email adresinize gönderilmiştir."
+                                            ,Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(LoginActivity.this,"Error!!" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                passwordResetDialog.create().show();
+            }
+        });
+
     }
 }
