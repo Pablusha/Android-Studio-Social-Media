@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BirFilmOner</string>
+    <string name="app_name">Bir Film Öner</string>
     <string name="loginEmail">Email:</string>
     <string name="loginPassword">Şifre:</string>
     <string name="registerConfPassword">Şifre Onay:</string>
