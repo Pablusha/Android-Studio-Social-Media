@@ -202,6 +202,7 @@ public class ProfileInformationsActivity extends AppCompatActivity {
             HashMap<String,Object> profileMap = new HashMap<>();
             profileMap.put("image",photoURL);
             profileMap.put("ad_soyad",ad_soyad);
+            profileMap.put("cinsiyet",cinsiyet);
             databaseReference.child("User").child(currentUserId).updateChildren(profileMap)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
