@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
 
+        //Remember Me
         SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
         String checkbox = preferences.getString("hatirla","");
         if (checkbox.equals("true")) {
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Remember me (Checked or not checked)
         chkBeniHatirla.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -113,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    //User didn't registered or email and password is wrong
     private void emailCheck() {
         firebaseAuth.fetchSignInMethodsForEmail(edtEmail.getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
@@ -146,6 +149,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //When user forgot his password then this method is gonna run.
     public void sifremiUnuttum(View view) {
         txtSifremiUnuttum = findViewById(R.id.ac_login_txtSifremiUnuttum);
         txtSifremiUnuttum.setOnClickListener(new View.OnClickListener() {

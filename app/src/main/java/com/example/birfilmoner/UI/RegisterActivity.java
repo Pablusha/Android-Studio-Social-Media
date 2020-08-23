@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -75,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                emailCheck();
                 firebaseAuth.createUserWithEmailAndPassword(email,sifre)
                         .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -118,6 +120,23 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
             }
         });
+    }
+
+    //İf user has already registered then this method is gonna run
+    private boolean emailCheck() {
+        firebaseAuth.fetchSignInMethodsForEmail(edtEmail.getText().toString())
+                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                        boolean check = !task.getResult().getSignInMethods().isEmpty();
+
+                        if (check == true) {
+                            Toast.makeText(RegisterActivity.this,"E-postaya ait bir hesap zaten kayıtlı.",Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                });
+        return true;
     }
 
     @Override

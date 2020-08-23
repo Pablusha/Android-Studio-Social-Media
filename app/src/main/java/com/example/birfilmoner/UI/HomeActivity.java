@@ -45,11 +45,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //Initialize Views
         navigationView = findViewById(R.id.ac_home_nav_view);
         View headView = navigationView.getHeaderView(0);
         userProfileImage = headView.findViewById(R.id.ac_home_userImage);
         txtUsername = headView.findViewById(R.id.ac_home_username);
 
+        //Toolbar
         toolbar = findViewById(R.id.ac_home_toolbar);
         setSupportActionBar(toolbar);
 
@@ -62,13 +64,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setItemIconTintList(null);
 
-
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         verifyUserInformations();
 
     }
 
+    //Handle Menu Item Click
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -143,6 +145,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    //NavigationView Retrieve User Profile Image
     private void retrieveProfileImage() {
         String currentUserId = firebaseAuth.getCurrentUser().getUid();
         databaseReference.child("User").child(currentUserId)
@@ -164,6 +167,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 });
     }
 
+    //NavigationView Retrieve User Name & Surname
     private void retrieveUserName() {
         String currentUserId = firebaseAuth.getCurrentUser().getUid();
         databaseReference.child("User").child(currentUserId)
@@ -183,6 +187,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 });
     }
 
+    //If user save his profile informations already, this method is gonna run.
     private void verifyUserInformations() {
         String currentUserId = firebaseAuth.getCurrentUser().getUid();
         databaseReference.child("User").child(currentUserId).addValueEventListener(new ValueEventListener() {
@@ -207,6 +212,5 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void sendUserToProfileInformationsActivity() {
         startActivity(new Intent(getApplicationContext(), ProfileInformationsActivity.class));
     }
-
 
 }
