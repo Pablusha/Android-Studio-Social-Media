@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    tools:context=".HomeActivity"
+    tools:context=".UI.HomeActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -18,11 +18,11 @@
             android:id="@+id/ac_home_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#80FFFF"
+            android:background="@color/toolbarBackground"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="@dimen/_4sdp" />
-        
+
         <FrameLayout
             android:id="@+id/ac_home_fragment_container"
             android:layout_width="match_parent"

@@ -5,12 +5,12 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_iconfinder_customize_user_profile_account_man_1_4484738"
-            android:title="Profilim" />
+            android:title="@string/menuProfile" />
 
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_iconfinder_streamline_75_185095"
-            android:title="Ayarlar" />
+            android:title="@string/menuSettings" />
 
         <item
             android:enabled="false"
@@ -39,7 +39,7 @@
         <item
             android:id="@+id/nav_cikis"
             android:icon="@drawable/ic_iconfinder_layer_11_basic_down_shut_ui_4427709"
-            android:title="Çıkış Yap" />
+            android:title="@string/menuCikis" />
     </group>
 
 </menu>

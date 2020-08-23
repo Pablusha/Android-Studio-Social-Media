@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileInformationsActivity"
+    tools:context=".UI.ProfileInformationsActivity"
     android:background="#63FFFF00">
 
     <RelativeLayout

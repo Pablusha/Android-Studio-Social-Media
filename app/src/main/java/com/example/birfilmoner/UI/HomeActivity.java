@@ -1,4 +1,4 @@
-package com.example.birfilmoner;
+package com.example.birfilmoner.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,24 +12,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.birfilmoner.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
+        navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -66,6 +67,47 @@ public class HomeActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         verifyUserInformations();
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_profile:
+                Toast.makeText(HomeActivity.this, "Profil butonuna tıklandı.", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_settings:
+                Toast.makeText(HomeActivity.this, "Ayarlar butonuna tıklandı.", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_cikis:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setCancelable(false);
+                builder.setMessage("Hesabınızdan çıkış yapmak istediğinize emin misiniz?");
+                builder.setPositiveButton("EVET", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        firebaseAuth.signOut();
+                        SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("hatirla","false");
+                        editor.apply();
+                        finish();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    }
+                });
+                builder.setNegativeButton("HAYIR", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+                break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     @Override
@@ -163,6 +205,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void sendUserToProfileInformationsActivity() {
-        startActivity(new Intent(getApplicationContext(),ProfileInformationsActivity.class));
+        startActivity(new Intent(getApplicationContext(), ProfileInformationsActivity.class));
     }
+
+
 }
