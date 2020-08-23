@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.ProfileActivity"
+    android:background="#DEFACD91">
+
+    <ImageView
+        android:id="@+id/ac_profile_imgBack"
+        android:layout_width="@dimen/_54sdp"
+        android:layout_height="@dimen/_54sdp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:onClick="backToHome" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ac_profile_imgProfile"
+            android:layout_width="@dimen/_146sdp"
+            android:layout_height="@dimen/_137sdp"
+            android:src="@drawable/profile"
+            app:civ_border_color="@color/colorBlack"
+            app:civ_border_width="@dimen/_2sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_80sdp"/>
+        
+        <TextView
+            android:id="@+id/ac_profile_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:layout_below="@id/ac_profile_imgProfile"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/_17sdp"
+            android:textColor="@color/colorBlack"
+            android:paddingTop="@dimen/_6sdp" />
+
+        <Button
+            android:layout_width="@dimen/_93sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:text="Profili Düzenle"
+            android:background="@drawable/button_profili_duzenle"
+            android:layout_below="@id/ac_profile_username"
+            android:layout_centerHorizontal="true"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_7sdp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -112,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
-
     }
 
     //User didn't registered or email and password is wrong
