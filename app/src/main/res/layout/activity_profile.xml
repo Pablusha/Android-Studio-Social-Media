@@ -40,6 +40,7 @@
             android:paddingTop="@dimen/_6sdp" />
 
         <Button
+            android:id="@+id/ac_profile_btnProfiliDuzenle"
             android:layout_width="@dimen/_93sdp"
             android:layout_height="@dimen/_20sdp"
             android:text="Profili Düzenle"
