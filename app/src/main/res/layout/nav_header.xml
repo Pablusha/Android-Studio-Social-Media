@@ -22,6 +22,7 @@
         android:text="@string/username"
         android:textSize="@dimen/_14sdp"
         android:paddingStart="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_5sdp" />
+        android:paddingEnd="@dimen/_5sdp"
+        android:textColor="#885252" />
 
 </LinearLayout>

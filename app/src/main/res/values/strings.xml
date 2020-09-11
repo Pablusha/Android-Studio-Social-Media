@@ -24,4 +24,5 @@
     <string name="menuProfile">Profil</string>
     <string name="menuSettings">Ayarlar</string>
     <string name="menuCikis">Çıkış Yap</string>
+    <string name="profiliDuzenle">Profili Düzenle</string>
 </resources>

@@ -32,7 +32,7 @@
             android:id="@+id/ac_profile_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="@string/username"
             android:layout_below="@id/ac_profile_imgProfile"
             android:layout_centerHorizontal="true"
             android:textSize="@dimen/_17sdp"
@@ -43,13 +43,14 @@
             android:id="@+id/ac_profile_btnProfiliDuzenle"
             android:layout_width="@dimen/_93sdp"
             android:layout_height="@dimen/_20sdp"
-            android:text="Profili Düzenle"
+            android:text="@string/profiliDuzenle"
             android:background="@drawable/button_profili_duzenle"
             android:layout_below="@id/ac_profile_username"
             android:layout_centerHorizontal="true"
             android:textAllCaps="false"
             android:textSize="@dimen/_13sdp"
-            android:layout_marginTop="@dimen/_7sdp"/>
+            android:layout_marginTop="@dimen/_7sdp"
+            android:onClick="sendUserToProfiliDuzenle" />
 
     </RelativeLayout>
 
