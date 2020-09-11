@@ -79,7 +79,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_settings:
-                Toast.makeText(HomeActivity.this, "Ayarlar butonuna tıklandı.", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),SettingsActivity.class));
                 break;
 
             case R.id.nav_cikis:
