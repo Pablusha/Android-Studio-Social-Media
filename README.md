@@ -1,5 +1,4 @@
-# Bir Film Öner
-Geliştirmeye başladığım bir android uygulama.
+# Social Media
 
 # Used Technologies
 * Android Studio
