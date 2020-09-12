@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private String photoUrl;
     private CircleImageView userProfileImage;
+    private ImageView imgPost;
     private TextView txtUsername;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
@@ -46,6 +48,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
 
         //Initialize Views
+        imgPost = findViewById(R.id.ac_home_imgPost);
         navigationView = findViewById(R.id.ac_home_nav_view);
         View headView = navigationView.getHeaderView(0);
         userProfileImage = headView.findViewById(R.id.ac_home_userImage);
@@ -145,48 +148,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    //NavigationView Retrieve User Profile Image
-    private void retrieveProfileImage() {
-        String currentUserId = firebaseAuth.getCurrentUser().getUid();
-        databaseReference.child("User").child(currentUserId)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if ((snapshot.exists()) && snapshot.hasChild("image")) {
-                            String retrieveImage = snapshot.child("image").getValue().toString();
-
-                            photoUrl = retrieveImage;
-                            Picasso.get().load(retrieveImage).into(userProfileImage);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
-
-    //NavigationView Retrieve User Name & Surname
-    private void retrieveUserName() {
-        String currentUserId = firebaseAuth.getCurrentUser().getUid();
-        databaseReference.child("User").child(currentUserId)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if ((snapshot.exists()) && snapshot.hasChild("ad_soyad")) {
-                            String username = snapshot.child("ad_soyad").getValue().toString();
-                            txtUsername.setText(username);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
-
     //If user save his profile informations already, this method is gonna run.
     private void verifyUserInformations() {
         String currentUserId = firebaseAuth.getCurrentUser().getUid();
@@ -194,8 +155,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if ((snapshot.child("image").exists())) {
-                    retrieveProfileImage();
-                    retrieveUserName();
+                    retrieveProfileImageAndUsername();
                 } else {
                     sendUserToProfileInformationsActivity();
                 }
@@ -207,6 +167,39 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+    }
+
+    //NavigationView Retrieve User Profile Image,User Name & Surname
+    private void retrieveProfileImageAndUsername() {
+        String currentUserId = firebaseAuth.getCurrentUser().getUid();
+        databaseReference.child("User").child(currentUserId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if ((snapshot.exists()) && snapshot.hasChild("image") && snapshot.hasChild("ad_soyad")) {
+                            String retrieveImage = snapshot.child("image").getValue().toString();
+                            String username = snapshot.child("ad_soyad").getValue().toString();
+
+                            photoUrl = retrieveImage;
+                            Picasso.get().load(retrieveImage).into(userProfileImage);
+                            txtUsername.setText(username);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    public void sharePost(View view) {
+        imgPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this,SharePostActivity.class));
+            }
+        });
     }
 
     private void sendUserToProfileInformationsActivity() {

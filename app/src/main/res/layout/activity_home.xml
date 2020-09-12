@@ -29,7 +29,8 @@
             android:layout_height="@dimen/_57sdp"
             android:src="@drawable/ic_iconfinder_jd_02_2259888"
             android:layout_marginStart="@dimen/_250sdp"
-            android:layout_marginTop="@dimen/_420sdp"/>
+            android:layout_marginTop="@dimen/_420sdp"
+            android:onClick="sharePost" />
 
         <FrameLayout
             android:id="@+id/ac_home_fragment_container"
