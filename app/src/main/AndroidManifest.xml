@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.SettingsActivity"></activity>
+        <activity
+            android:name=".UI.SettingsActivity"
+            android:label="Ayarlar" />
         <activity android:name=".UI.ProfilDuzenleActivity" />
         <activity android:name=".UI.ProfileActivity" />
         <activity

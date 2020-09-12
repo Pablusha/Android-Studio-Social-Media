@@ -9,4 +9,5 @@
     <color name="colorBlack">#000000</color>
     <color name="colorKayitOlText">#02A7F0</color>
     <color name="toolbarBackground">#80FFFF</color>
+    <color name="settingsToolbarBackground">#508181</color>
 </resources>
